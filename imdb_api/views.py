@@ -6,6 +6,8 @@ from django.http import HttpResponse, JsonResponse
 from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
 import json
+from http import HttpResponse
+
 # Create your views here.
 
 def movie_list(request):
@@ -80,6 +82,9 @@ def stream_detail(request, pk):
     stream_platform = StreamPlatform.objects.get(pk = pk)
     serialized = StreamPlatformSerializer(stream_platform)
     return JsonResponse(serialized.data, safe = False)
+
+def try(request):
+    return HttpResponse("hello")
 
 
 
